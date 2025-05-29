@@ -1,5 +1,5 @@
 # Change baseurl before deploy
-baseurl = "https://xiwon.github.io"
+baseurl = "https://www.xiwon.blog"
 languageCode = "zh-cn"
 title = "熹圜 | Xiwon"
 
