@@ -1,3 +1,26 @@
 /*
     You can add your own custom styles here.
 */
+
+@font-face {
+	font-family:'SF Pro SC';
+	font-style:normal;
+	font-weight:600;
+	src:url("https://cdn.jsdelivr.net/gh/Xiwon/jsDelivr_resource@main/PingFangSC-Semibold.woff2") format("woff2");
+	/* (C) 2015 Apple Inc. All rights reserved. */
+}
+
+@font-face {
+	font-family:'SF Pro SC';
+	font-style:normal;
+	font-weight:400;
+	src:url("https://cdn.jsdelivr.net/gh/Xiwon/jsDelivr_resource@main/PingFangSC-Regular.woff2") format("woff2");
+	/* (C) 2015 Apple Inc. All rights reserved. */
+}
+
+@font-face {
+	font-family:'FZXJL';
+	font-style:normal;
+	font-weight:400;
+	src:url("https://cdn.jsdelivr.net/gh/Xiwon/jsDelivr_resource@main/FZXJL.woff2") format("woff2");
+}
