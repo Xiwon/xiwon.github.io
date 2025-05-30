@@ -24,3 +24,23 @@
 	font-weight:400;
 	src:url("https://cdn.jsdelivr.net/gh/Xiwon/jsDelivr_resource@main/FZXJL.woff2") format("woff2");
 }
+
+[data-scheme="dark"] .aplayer {
+	background: #1f2937;
+}
+
+[data-scheme="dark"] .aplayer .aplayer-lrc:before {
+	background: linear-gradient(180deg,#1f2937 0,hsla(0,0%,100%,0));
+}
+
+[data-scheme="dark"] .aplayer .aplayer-lrc:after {
+	background-image: linear-gradient(rgba(255, 255, 255, 0) 0px, rgba(31, 41, 55, 0.8));
+}
+
+[data-scheme="dark"] .aplayer .aplayer-info .aplayer-music .aplayer-author, .aplayer .aplayer-info .aplayer-controller .aplayer-time, .aplayer .aplayer-lrc p{
+	color: #aaaaaa !important;
+}
+
+[data-scheme="dark"] .aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon path {
+	fill: #aaaaaa !important;
+}
