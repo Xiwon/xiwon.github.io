@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>TestTag2 on 熹圜 | Xiwon</title><link>https://www.xiwon.blog/tags/testtag2/</link><description>Recent content in TestTag2 on 熹圜 | Xiwon</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Thu, 29 May 2025 21:20:21 +0800</lastBuildDate><atom:link href="https://www.xiwon.blog/tags/testtag2/index.xml" rel="self" type="application/rss+xml"/><item><title>Hello_Hugo</title><link>https://www.xiwon.blog/p/hello_hugo/</link><pubDate>Thu, 29 May 2025 21:20:21 +0800</pubDate><guid>https://www.xiwon.blog/p/hello_hugo/</guid><description>&lt;p>This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p>
+&lt;h2 id="headings">Headings
+&lt;/h2>&lt;p>The following HTML &lt;code>&amp;lt;h1&amp;gt;&lt;/code>—&lt;code>&amp;lt;h6&amp;gt;&lt;/code> elements represent six levels of section headings. &lt;code>&amp;lt;h1&amp;gt;&lt;/code> is the highest section level while &lt;code>&amp;lt;h6&amp;gt;&lt;/code> is the lowest.&lt;/p>
+&lt;h1 id="h1">H1
+&lt;/h1>&lt;h2 id="h2">H2
+&lt;/h2>&lt;h3 id="h3">H3
+&lt;/h3>&lt;h4 id="h4">H4
+&lt;/h4>&lt;h5 id="h5">H5
+&lt;/h5>&lt;h6 id="h6">H6
+&lt;/h6>&lt;h2 id="正文测试--苹方--lato">正文测试 | 苹方 | Lato
+&lt;/h2>&lt;p>而这些并不是完全重要，更加重要的问题是，带着这些问题，我们来审视一下学生会退会。既然如何，对我个人而言，学生会退会不仅仅是一个重大的事件，还可能会改变我的人生。我们不得不面对一个非常尴尬的事实，那就是，可是，即使是这样，学生会退会的出现仍然代表了一定的意义。学生会退会，发生了会如何，不发生又会如何。经过上述讨论，生活中，若学生会退会出现了，我们就不得不考虑它出现了的事实。学生会退会，到底应该如何实现。这样看来，在这种困难的抉择下，本人思来想去，寝食难安。对我个人而言，学生会退会不仅仅是一个重大的事件，还可能会改变我的人生。就我个人来说，学生会退会对我的意义，不能不说非常重大。莎士比亚曾经提到过，人的一生是短的，但如果卑劣地过这一生，就太长了。这似乎解答了我的疑惑。莫扎特说过一句富有哲理的话，谁和我一样用功，谁就会和我一样成功。这启发了我，对我个人而言，学生会退会不仅仅是一个重大的事件，还可能会改变我的人生。学生会退会，到底应该如何实现。一般来说，从这个角度来看，这种事实对本人来说意义重大，相信对这个世界也是有一定意义的。在这种困难的抉择下，本人思来想去，寝食难安。了解清楚学生会退会到底是一种怎么样的存在，是解决一切问题的关键。一般来说，生活中，若学生会退会出现了，我们就不得不考虑它出现了的事实。问题的关键究竟为何？而这些并不是完全重要，更加重要的问题是。&lt;/p>
+&lt;p>奥斯特洛夫斯基曾经说过，共同的事业，共同的斗争，可以使人们产生忍受一切的力量。带着这句话，我们还要更加慎重的审视这个问题：一般来讲，我们都必须务必慎重的考虑考虑。既然如此，这种事实对本人来说意义重大，相信对这个世界也是有一定意义的。带着这些问题，我们来审视一下学生会退会。我认为，我认为，在这种困难的抉择下，本人思来想去，寝食难安。问题的关键究竟为何？每个人都不得不面对这些问题。在面对这种问题时，要想清楚，学生会退会，到底是一种怎么样的存在。我认为，既然如此，每个人都不得不面对这些问题。在面对这种问题时，那么，我认为，学生会退会因何而发生。&lt;/p>
+&lt;p>Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptionse latur sitiae dolessi aut parist aut dollo enim qui voluptate ma dolestendit peritin re plis aut quas inctum laceat est volestemque commosa as cus endigna tectur, offic to cor sequas etum rerum idem sintibus eiur? Quianimin porecus evelectur, cum que nis nust voloribus ratem aut omnimi, sitatur? Quiatem. Nam, omnis sum am facea corem alique molestrunt et eos evelece arcillit ut aut eos eos nus, sin conecerem erum fuga. Ri oditatquam, ad quibus unda veliamenimin cusam et facea ipsamus es exerum sitate dolores editium rerore eost, temped molorro ratiae volorro te reribus dolorer sperchicium faceata tiustia prat.&lt;/p>
+&lt;p>Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sapicia is sinveli squiatum, core et que aut hariosam ex eat.&lt;/p>
+&lt;h2 id="blockquotes--方正细金陵--times-new-roman">Blockquotes | 方正细金陵 | Times New Roman
+&lt;/h2>&lt;p>The blockquote element represents content that is quoted from another source, optionally with a citation which must be within a &lt;code>footer&lt;/code> or &lt;code>cite&lt;/code> element, and optionally with in-line changes such as annotations and abbreviations.&lt;/p>
+&lt;blockquote>
+&lt;p>Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptionse latur sitiae dolessi aut parist aut dollo enim qui voluptate ma dolestendit peritin re plis aut quas inctum laceat est volestemque commosa as cus endigna tectur, offic to cor sequas etum rerum idem sintibus eiur? Quianimin porecus evelectur, cum que nis nust voloribus ratem aut omnimi, sitatur? Quiatem. Nam, omnis sum am facea corem alique molestrunt et eos evelece arcillit ut aut eos eos nus, sin conecerem erum fuga. Ri oditatquam, ad quibus unda veliamenimin cusam et facea ipsamus es exerum sitate dolores editium rerore eost, temped molorro ratiae volorro te reribus dolorer sperchicium faceata tiustia prat.&lt;/p>&lt;/blockquote>
+&lt;blockquote>
+&lt;p>豫章故郡，洪都新府。星分翼轸，地接衡庐。襟三江而带五湖，控蛮荆而引瓯越。物华天宝，龙光射牛斗之墟；人杰地灵，徐孺下陈蕃之榻。雄州雾列，俊采星驰。台隍枕夷夏之交，宾主尽东南之美。都督阎公之雅望，棨戟遥临；宇文新州之懿范，襜帷暂驻。十旬休假，胜友如云；千里逢迎，高朋满座。腾蛟起凤，孟学士之词宗；紫电青霜，王将军之武库。家君作宰，路出名区；童子何知，躬逢胜饯。&lt;/p>
+&lt;p>时维九月，序属三秋。潦水尽而寒潭清，烟光凝而暮山紫。俨骖騑于上路，访风景于崇阿；临帝子之长洲，得天人之旧馆。层峦耸翠，上出重霄；飞阁流丹，下临无地。鹤汀凫渚，穷岛屿之萦回；桂殿兰宫，即冈峦之体势。&lt;/p>
+&lt;p>披绣闼，俯雕甍，山原旷其盈视，川泽纡其骇瞩。闾阎扑地，钟鸣鼎食之家；舸舰弥津，青雀黄龙之舳。云销雨霁，彩彻区明。落霞与孤鹜齐飞，秋水共长天一色。渔舟唱晚，响穷彭蠡之滨；雁阵惊寒，声断衡阳之浦。&lt;/p>
+&lt;p>遥襟甫畅，逸兴遄飞。爽籁发而清风生，纤歌凝而白云遏。睢园绿竹，气凌彭泽之樽；邺水朱华，光照临川之笔。四美具，二难并。穷睇眄于中天，极娱游于暇日。天高地迥，觉宇宙之无穷；兴尽悲来，识盈虚之有数。望长安于日下，目吴会于云间。地势极而南溟深，天柱高而北辰远。关山难越，谁悲失路之人？萍水相逢，尽是他乡之客。怀帝阍而不见，奉宣室以何年？&lt;/p>
+&lt;p>嗟乎！时运不齐，命途多舛。冯唐易老，李广难封。屈贾谊于长沙，非无圣主；窜梁鸿于海曲，岂乏明时？所赖君子见机，达人知命。老当益壮，宁移白首之心？穷且益坚，不坠青云之志。酌贪泉而觉爽，处涸辙以犹欢。北海虽赊，扶摇可接；东隅已逝，桑榆非晚。孟尝高洁，空余报国之情；阮籍猖狂，岂效穷途之哭！&lt;/p>
+&lt;p>勃，三尺微命，一介书生。无路请缨，等终军之弱冠；有怀投笔，慕宗悫之长风。舍簪笏于百龄，奉晨昏于万里。非谢家之宝树，接孟氏之芳邻。他日趋庭，叨陪鲤对；今兹捧袂，喜托龙门。杨意不逢，抚凌云而自惜；钟期既遇，奏流水以何惭？&lt;/p>
+&lt;p>呜乎！胜地不常，盛筵难再；兰亭已矣，梓泽丘墟。临别赠言，幸承恩于伟饯；登高作赋，是所望于群公。敢竭鄙怀，恭疏短引；一言均赋，四韵俱成。请洒潘江，各倾陆海云尔&lt;/p>&lt;/blockquote>
+&lt;h2 id="tables">Tables
+&lt;/h2>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>a&lt;/th>
+&lt;th>b&lt;/th>
+&lt;th>c&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>2&lt;/td>
+&lt;td>3&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>4&lt;/td>
+&lt;td>5&lt;/td>
+&lt;td>6&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>7&lt;/td>
+&lt;td>8&lt;/td>
+&lt;td>9&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="code-blocks">Code Blocks
+&lt;/h2>&lt;p>代码高亮主题会随颜色主题变化&lt;/p>
+&lt;p>一棵朴实的 lct&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;span class="lnt">40
+&lt;/span>&lt;span class="lnt">41
+&lt;/span>&lt;span class="lnt">42
+&lt;/span>&lt;span class="lnt">43
+&lt;/span>&lt;span class="lnt">44
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-cpp" data-lang="cpp">&lt;span class="line">&lt;span class="cl">&lt;span class="k">struct&lt;/span> &lt;span class="nc">mylct&lt;/span>&lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">int&lt;/span> &lt;span class="n">ch&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">N&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="mi">2&lt;/span>&lt;span class="p">],&lt;/span> &lt;span class="n">val&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">N&lt;/span>&lt;span class="p">],&lt;/span> &lt;span class="n">sum&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">N&lt;/span>&lt;span class="p">],&lt;/span> &lt;span class="n">fa&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">N&lt;/span>&lt;span class="p">],&lt;/span> &lt;span class="n">tag&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">N&lt;/span>&lt;span class="p">];&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kr">inline&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">update&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">p&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="n">sum&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">val&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">^&lt;/span> &lt;span class="n">sum&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">ch&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">]]&lt;/span> &lt;span class="o">^&lt;/span> &lt;span class="n">sum&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">ch&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">]];&lt;/span> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kr">inline&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">pushdown&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">p&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">tag&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">])&lt;/span> &lt;span class="n">flip&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ch&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">]),&lt;/span> &lt;span class="n">flip&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ch&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">]),&lt;/span> &lt;span class="n">tag&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kr">inline&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="nf">isroot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">p&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="k">return&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">ch&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">fa&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">]][&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">^&lt;/span> &lt;span class="n">p&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">ch&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">fa&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">]][&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">^&lt;/span> &lt;span class="n">p&lt;/span>&lt;span class="p">);&lt;/span> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kr">inline&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">flip&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">p&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="n">swap&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ch&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">],&lt;/span> &lt;span class="n">ch&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">]),&lt;/span> &lt;span class="n">tag&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">^=&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kr">inline&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="nf">ident&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">p&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="k">return&lt;/span> &lt;span class="n">p&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">ch&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">fa&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">]][&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">];&lt;/span> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kr">inline&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">rotate&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">p&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">int&lt;/span> &lt;span class="n">x&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">fa&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">];&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="n">y&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">fa&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">];&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">int&lt;/span> &lt;span class="n">idx&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">ident&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="n">idp&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">ident&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="n">isroot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="n">ch&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">y&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="n">idx&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">p&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="n">fa&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">y&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ch&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="n">idp&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">ch&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="n">idp&lt;/span> &lt;span class="o">^&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">];&lt;/span> &lt;span class="n">fa&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">ch&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="n">idp&lt;/span> &lt;span class="o">^&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">]]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">x&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ch&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="n">idp&lt;/span> &lt;span class="o">^&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">x&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="n">fa&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">p&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">update&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">);&lt;/span> &lt;span class="cm">/*update(p)*/&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">void&lt;/span> &lt;span class="nf">pushall&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">p&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="n">isroot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="n">pushall&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">fa&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">]);&lt;/span> &lt;span class="n">pushdown&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">);&lt;/span> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kr">inline&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">splay&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">p&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">pushall&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">while&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="n">isroot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">isroot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">fa&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">]))&lt;/span> &lt;span class="n">rotate&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">else&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">ident&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">fa&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">])&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">ident&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="n">rotate&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">fa&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">]),&lt;/span> &lt;span class="n">rotate&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">else&lt;/span> &lt;span class="n">rotate&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="n">rotate&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">update&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kr">inline&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">access&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">x&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="k">for&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">y&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="n">x&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="n">x&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">fa&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">y&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">x&lt;/span>&lt;span class="p">])&lt;/span> &lt;span class="n">splay&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="n">ch&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">y&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">update&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">);&lt;/span> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kr">inline&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">makeroot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">x&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="n">access&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="n">splay&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="n">flip&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">);&lt;/span> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kr">inline&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="nf">findroot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">x&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">access&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="n">splay&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">while&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">ch&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">])&lt;/span> &lt;span class="n">pushdown&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="n">x&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">ch&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">];&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">splay&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="n">x&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kr">inline&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">split&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">x&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="n">y&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="n">makeroot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="n">access&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">y&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="n">splay&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">y&lt;/span>&lt;span class="p">);&lt;/span> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kr">inline&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">link&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">x&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="n">y&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="n">makeroot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">);&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">findroot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">y&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="n">x&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="n">fa&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">y&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kr">inline&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">cut&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">x&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="n">y&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">makeroot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">findroot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">y&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">x&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="n">fa&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">y&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">x&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="o">!&lt;/span>&lt;span class="n">ch&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">y&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">])&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ch&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">fa&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">y&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">update&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span> &lt;span class="n">lct&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="image-gallery">Image Gallery
+&lt;/h2>&lt;p>Hugo theme Stack supports the creation of interactive image galleries using Markdown. It&amp;rsquo;s powered by &lt;a class="link" href="https://photoswipe.com/" target="_blank" rel="noopener"
+>PhotoSwipe&lt;/a> and its syntax was inspired by &lt;a class="link" href="https://typlog.com/" target="_blank" rel="noopener"
+>Typlog&lt;/a>.&lt;/p>
+&lt;p>To use this feature, the image must be in the same directory as the Markdown file, as it uses Hugo&amp;rsquo;s page bundle feature to read the dimensions of the image. &lt;strong>External images are not supported.&lt;/strong>&lt;/p>
+&lt;h3 id="syntax">Syntax
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-markdown" data-lang="markdown">&lt;span class="line">&lt;span class="cl">![&lt;span class="nt">Image 1&lt;/span>](&lt;span class="na">1.jpg&lt;/span>) ![&lt;span class="nt">Image 2&lt;/span>](&lt;span class="na">2.jpg&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="result">Result
+&lt;/h3>&lt;p>&lt;img src="https://www.xiwon.blog/p/hello_hugo/florian-klauer-nptLmg6jqDo-unsplash.jpg"
+width="667"
+height="1000"
+srcset="https://www.xiwon.blog/p/hello_hugo/florian-klauer-nptLmg6jqDo-unsplash_hu_e98fca2b4272416e.jpg 480w, https://www.xiwon.blog/p/hello_hugo/florian-klauer-nptLmg6jqDo-unsplash_hu_e3d37c9ded115b12.jpg 1024w"
+loading="lazy"
+alt="Photo by Florian Klauer on Unsplash"
+class="gallery-image"
+data-flex-grow="66"
+data-flex-basis="160px"
+> &lt;img src="https://www.xiwon.blog/p/hello_hugo/luca-bravo-alS7ewQ41M8-unsplash.jpg"
+width="1000"
+height="667"
+srcset="https://www.xiwon.blog/p/hello_hugo/luca-bravo-alS7ewQ41M8-unsplash_hu_e13c58d5189f892c.jpg 480w, https://www.xiwon.blog/p/hello_hugo/luca-bravo-alS7ewQ41M8-unsplash_hu_8fc948b7ee525251.jpg 1024w"
+loading="lazy"
+alt="Photo by Luca Bravo on Unsplash"
+class="gallery-image"
+data-flex-grow="149"
+data-flex-basis="359px"
+>&lt;/p>
+&lt;p>&lt;img src="https://www.xiwon.blog/p/hello_hugo/helena-hertz-wWZzXlDpMog-unsplash.jpg"
+width="1000"
+height="750"
+srcset="https://www.xiwon.blog/p/hello_hugo/helena-hertz-wWZzXlDpMog-unsplash_hu_503c0ebcc5245e10.jpg 480w, https://www.xiwon.blog/p/hello_hugo/helena-hertz-wWZzXlDpMog-unsplash_hu_48c98de55fb3c999.jpg 1024w"
+loading="lazy"
+alt="Photo by Helena Hertz on Unsplash"
+class="gallery-image"
+data-flex-grow="133"
+data-flex-basis="320px"
+> &lt;img src="https://www.xiwon.blog/p/hello_hugo/hudai-gayiran-3Od_VKcDEAA-unsplash.jpg"
+width="667"
+height="1000"
+srcset="https://www.xiwon.blog/p/hello_hugo/hudai-gayiran-3Od_VKcDEAA-unsplash_hu_f81a3588c5c4a663.jpg 480w, https://www.xiwon.blog/p/hello_hugo/hudai-gayiran-3Od_VKcDEAA-unsplash_hu_1c52ba2a4ad7b9a0.jpg 1024w"
+loading="lazy"
+alt="Photo by Hudai Gayiran on Unsplash"
+class="gallery-image"
+data-flex-grow="66"
+data-flex-basis="160px"
+>&lt;/p>
+&lt;h2 id="math-test">Math Test
+&lt;/h2>&lt;h3 id="inline-math">Inline math
+&lt;/h3>&lt;p>This is an inline mathematical expression: $\varphi = \dfrac{1+\sqrt5}{2}= 1.6180339887…$&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-markdown" data-lang="markdown">&lt;span class="line">&lt;span class="cl">$\varphi = \dfrac{1+\sqrt5}{2}= 1.6180339887…$
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="block-math">Block math
+&lt;/h3>$$
+\varphi = 1+\frac{1} {1+\frac{1} {1+\frac{1} {1+\cdots} } }
+$$&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-markdown" data-lang="markdown">&lt;span class="line">&lt;span class="cl">$$
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> \varphi = 1+\frac{1} {1+\frac{1} {1+\frac{1} {1+\cdots} } }
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$$
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>$$
+f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
+$$&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-markdown" data-lang="markdown">&lt;span class="line">&lt;span class="cl">$$
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$$
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="shortcodes">Shortcodes
+&lt;/h2>&lt;p>For more details, check out the &lt;a class="link" href="https://stack.jimmycai.com/writing/shortcodes" target="_blank" rel="noopener"
+>documentation&lt;/a>.&lt;/p>
+&lt;div class="video-wrapper">
+&lt;iframe src="https://player.bilibili.com/player.html?as_wide=1&amp;amp;high_quality=1&amp;amp;page=1&amp;bvid=BV1d4411N7zD"
+scrolling="no"
+frameborder="no"
+framespacing="0"
+allowfullscreen="true"
+>
+&lt;/iframe>
+&lt;/div>
+&lt;blockquote>
+&lt;p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p>&lt;span class="cite">&lt;span>― &lt;/span>&lt;span>A famous person, &lt;/span>&lt;a href="https://en.wikipedia.org/wiki/Book">&lt;cite>The book they wrote&lt;/cite>&lt;/a>&lt;/span>&lt;/blockquote>
+&lt;h2 id="comments">Comments
+&lt;/h2>&lt;p>评论区可能要刷新一两次才会显示出来，它有点缓慢&amp;hellip;&lt;/p></description></item></channel></rss>
