@@ -1,0 +1,782 @@
+<!doctype html><html lang=zh-cn dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="研究中…"><title>[WIP] SGLang Scheduler 观测笔记</title><link rel=canonical href=https://www.xiwon.blog/p/wip-sglang-scheduler-%E8%A7%82%E6%B5%8B%E7%AC%94%E8%AE%B0/><link rel=stylesheet href=/scss/style.min.0aa6526b96b923b562e2ddbd01886a15fdbcf1c6212c347ae8a41bc431725310.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css><script src=https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js></script><script src=https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js></script><meta property='og:title' content="[WIP] SGLang Scheduler 观测笔记"><meta property='og:description' content="研究中…"><meta property='og:url' content='https://www.xiwon.blog/p/wip-sglang-scheduler-%E8%A7%82%E6%B5%8B%E7%AC%94%E8%AE%B0/'><meta property='og:site_name' content='熹圜 | Xiwon'><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:published_time' content='2026-10-22T17:11:51+08:00'><meta property='article:modified_time' content='2026-10-22T17:11:51+08:00'><meta property='og:image' content='https://www.xiwon.blog/p/wip-sglang-scheduler-%E8%A7%82%E6%B5%8B%E7%AC%94%E8%AE%B0/cover.jpg'><meta name=twitter:title content="[WIP] SGLang Scheduler 观测笔记"><meta name=twitter:description content="研究中…"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content='https://www.xiwon.blog/p/wip-sglang-scheduler-%E8%A7%82%E6%B5%8B%E7%AC%94%E8%AE%B0/cover.jpg'><link rel="shortcut icon" href=/pxArt4.png></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label="Toggle Menu">
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/avtar-6_hu_a21722c8ac1e7cfc.webp width=300 height=300 class=site-logo loading=lazy alt=Avatar>
+</a><span class=emoji>👾</span></figure><div class=site-meta><h1 class=site-name><a href=/>熹圜 | Xiwon</a></h1><h2 class=site-description>好耶</h2></div></header><ol class=menu-social><li><a href=https://github.com/Xiwon target=_blank title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>Home</span></a></li><li><a href=/archives/><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>Archives</span></a></li><li><a href=/search/><svg class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg>
+<span>Search</span></a></li><li><a href=/links/><svg class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M10 14a3.5 3.5.0 005 0l4-4a3.5 3.5.0 00-5-5l-.5.5"/><path d="M14 10a3.5 3.5.0 00-5 0l-4 4a3.5 3.5.0 005 5l.5-.5"/></svg>
+<span>Links</span></a></li><li class=menu-bottom-section><ol class=menu><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>DARK</span></li></ol></li></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">Table of contents</h2><div class=widget--toc><nav id=TableOfContents><ol><li><a href=#futuremap>FutureMap</a><ol><li><a href=#槽位号>槽位号</a></li><li><a href=#store-next-token-ids>Store next token ids</a></li><li><a href=#get-next-token-ids>Get next token ids</a></li><li><a href=#batch-维护>Batch 维护</a><ol><li><a href=#请求退出>请求退出</a></li><li><a href=#batch-合并>batch 合并</a></li><li><a href=#新请求加入>新请求加入</a></li></ol></li></ol></li><li><a href=#war-barrier>WAR barrier</a></li><li><a href=#ingest_requests>ingest_requests</a></li><li><a href=#get_next_batch_to_run>get_next_batch_to_run</a><ol><li><a href=#处理上一个-batch-的影响>处理上一个 batch 的影响</a></li><li><a href=#尝试构造新-prefill-batch>尝试构造新 prefill batch</a><ol><li><a href=#get_new_batch_prefill---part1>get_new_batch_prefill - part1</a></li><li><a href=#adderadd_one_req>adder.add_one_req</a></li><li><a href=#get_new_batch_prefill---part2>get_new_batch_prefill - part2</a></li></ol></li><li><a href=#prefill-优先-vs-decode>prefill 优先 vs decode</a></li><li><a href=#后处理>后处理</a></li></ol></li></ol></nav></div></section></aside><main class="main full-width"><article class="has-image main-article"><header class=article-header><div class=article-image><a href=/p/wip-sglang-scheduler-%E8%A7%82%E6%B5%8B%E7%AC%94%E8%AE%B0/><img src=/p/wip-sglang-scheduler-%E8%A7%82%E6%B5%8B%E7%AC%94%E8%AE%B0/cover_hu_353bcb4953845c50.jpg srcset="/p/wip-sglang-scheduler-%E8%A7%82%E6%B5%8B%E7%AC%94%E8%AE%B0/cover_hu_353bcb4953845c50.jpg 800w, /p/wip-sglang-scheduler-%E8%A7%82%E6%B5%8B%E7%AC%94%E8%AE%B0/cover_hu_3ce826ea9add1ffd.jpg 1600w" width=800 height=450 loading=lazy alt="Featured image of post [WIP] SGLang Scheduler 观测笔记"></a></div><div class=article-details><div class=article-title-wrapper><h2 class=article-title><a href=/p/wip-sglang-scheduler-%E8%A7%82%E6%B5%8B%E7%AC%94%E8%AE%B0/>[WIP] SGLang Scheduler 观测笔记</a></h2><h3 class=article-subtitle>研究中…</h3></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published>Oct 22, 2026</time></div><div><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>16 minute read</time></div></footer></div></header><section class=article-content><p>ref：https://zhuanlan.zhihu.com/p/1969077475129688722</p><hr><p>粘贴出的代码段可能经过简化，去除了与讨论无关的细节</p><p>所有函数名在引用时使用行内代码包裹，变量则直接书写。代码段开头用注释标记了端到端流程中执行到该片段的栈帧，如果没有标注则表示和上一段相同</p><p>Scheduler 的主要代码都位于仓库中的 python/sglang/srt/managers/scheduler.py</p><hr><p>SGLang 有三个核心进程</p><ul><li><strong>TokenizerManager</strong>：http gateway 和 tokenize。经过处理的请求发给 Scheduler</li><li><strong>Scheduler</strong>：推理调度。将输出发给 DetokenizerManager</li><li><strong>DetokenizerManager</strong>：detokenize 后将字符串结果发回 TokenizerManager</li></ul><p>三个核心进程之间使用 ZMQ IPC 通信</p><p>我们将着重研究 Scheduler 的调度流水线。为了简化讨论假设在单机单卡上推理，忽略 PD 分离等特性</p><hr><h1 id=normal-loop>Normal Loop</h1><p>在<u><strong>非 overlap 模式</strong></u>下 Scheduler 的主循环是这样的：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=c1># Scheduler.event_loop_normal</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>while</span> <span class=kc>True</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=bp>self</span><span class=o>.</span><span class=n>ingest_requests</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>plan</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>get_next_batch_to_run</span><span class=p>(</span><span class=o>...</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>batch</span> <span class=o>=</span> <span class=n>plan</span><span class=o>.</span><span class=n>batch_to_run</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>batch</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=n>result</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>run_batch</span><span class=p>(</span><span class=n>batch</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>process_batch_result</span><span class=p>(</span><span class=n>batch</span><span class=p>,</span> <span class=n>result</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=bp>self</span><span class=o>.</span><span class=n>last_batch</span> <span class=o>=</span> <span class=n>batch</span>
+</span></span></code></pre></td></tr></table></div></div><ul><li><code>ingest_requests</code> 从 ZMQ 拉取请求，将请求放入 waiting_queue 里。waiting_queue 是一个等待被 prefill (extend) 的队列，running_batch 是目前还在等待 decode 的 batch</li><li><code>get_next_batch_to_run</code> 同时考虑上一拍 batch 的处理结果、waiting_queue 和 running_batch，给出下一拍应该运行的 batch 以及新的 running_batch</li><li><code>run_batch</code> 将 batch 发送到 GPU 上运行一步推理</li><li><code>process_batch_result</code> 执行后处理，对于 prefill 结果来说更新 RadixCache，对于 decode 结果来说考虑请求是否已经完成，更新缓存并将结果送到 Detokenizer</li></ul><hr><h1 id=overlap-loop>Overlap Loop</h1><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=bp>self</span><span class=o>.</span><span class=n>result_queue</span> <span class=o>=</span> <span class=n>deque</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>pop_and_process</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=n>old_batch</span><span class=p>,</span> <span class=n>old_result</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>result_queue</span><span class=o>.</span><span class=n>popleft</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=bp>self</span><span class=o>.</span><span class=n>process_batch_result</span><span class=p>(</span><span class=n>old_batch</span><span class=p>,</span> <span class=n>old_result</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>while</span> <span class=kc>True</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=bp>self</span><span class=o>.</span><span class=n>gracefully_exit</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>break</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=bp>self</span><span class=o>.</span><span class=n>ingest_requests</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>plan</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>get_next_batch_to_run</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>        <span class=n>running_batch</span><span class=o>=</span><span class=bp>self</span><span class=o>.</span><span class=n>running_batch</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=n>last_batch</span><span class=o>=</span><span class=bp>self</span><span class=o>.</span><span class=n>last_batch</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=bp>self</span><span class=o>.</span><span class=n>running_batch</span> <span class=o>=</span> <span class=n>plan</span><span class=o>.</span><span class=n>running_batch</span>
+</span></span><span class=line><span class=cl>    <span class=n>batch</span> <span class=o>=</span> <span class=n>plan</span><span class=o>.</span><span class=n>batch_to_run</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>disable_overlap_for_batch</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>is_disable_overlap_for_batch</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>        <span class=n>batch</span><span class=p>,</span> <span class=n>last_batch</span><span class=o>=</span><span class=bp>self</span><span class=o>.</span><span class=n>last_batch</span>
+</span></span><span class=line><span class=cl>    <span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>disable_overlap_for_batch</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=n>pop_and_process</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>batch</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=n>batch_result</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>run_batch</span><span class=p>(</span><span class=n>batch</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_apply_war_barrier</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>result_queue</span><span class=o>.</span><span class=n>append</span><span class=p>((</span><span class=n>batch</span><span class=o>.</span><span class=n>copy</span><span class=p>(),</span> <span class=n>batch_result</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>    <span class=k>else</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=n>batch_result</span> <span class=o>=</span> <span class=kc>None</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_sched_idled</span> <span class=o>=</span> <span class=kc>True</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=bp>self</span><span class=o>.</span><span class=n>last_batch</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=ow>not</span> <span class=n>disable_overlap_for_batch</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=n>pop_and_process</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=k>elif</span> <span class=n>batch</span> <span class=ow>is</span> <span class=kc>None</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>on_idle</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=bp>self</span><span class=o>.</span><span class=n>is_generation</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>launch_batch_sample_if_needed</span><span class=p>(</span><span class=n>batch_result</span><span class=p>,</span> <span class=n>batch</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=bp>self</span><span class=o>.</span><span class=n>last_batch</span> <span class=o>=</span> <span class=n>batch</span>
+</span></span></code></pre></td></tr></table></div></div><p>总体来说，非 overlap 循环可以划分为串行执行的三个阶段</p><ul><li><strong>Pre schedule</strong>：接收及调度请求，匹配 cache，分配请求所需内存资源，以及做一些推理启动前的准备工作</li><li><strong>Compute batch</strong>：将 batch 发送到 GPU 上运行一步推理并采样</li><li><strong>Post schedule</strong>：检查请求是否完成，送 Detokenizer 等</li></ul><p>实现 overlap 的关键在于调整 loop 的各阶段执行顺序，错开两步推理，同时使用 stream 异步执行命令</p><p>具体来说，Pre Schedule 执行完成后 Compute Batch 在 GPU 上启动，此时 CPU 空闲，我们虽然不能立刻运行当前 batch 的 Post Schedule，但是可以运行<strong>上一拍</strong>的 Post Schedule</p><p>因此调整 loop 为 Pre N -> Compute N -> Post N-1 -> Pre N+1 -> Compute N+1 -> Post N -> … 这样的循环即可将 Post 部分的耗时和 Compute 重叠起来，提升吞吐量</p><p><img src=/p/wip-sglang-scheduler-%E8%A7%82%E6%B5%8B%E7%AC%94%E8%AE%B0/p1.png width=2549 height=299 srcset="/p/wip-sglang-scheduler-%E8%A7%82%E6%B5%8B%E7%AC%94%E8%AE%B0/p1_hu_9a4805941632f61d.png 480w, /p/wip-sglang-scheduler-%E8%A7%82%E6%B5%8B%E7%AC%94%E8%AE%B0/p1_hu_606aa69431f21fe4.png 1024w" loading=lazy class=gallery-image data-flex-grow=852 data-flex-basis=2046px></p><p>我们将基于这个流水线草图不断补充 loop 的细节</p><hr><p>可以注意到这样一个问题：当我们 Pre Schedule N+1 拍时，第 N 拍往往还在计算中，这意味着在选择哪些请求会进入下一拍的 batch 时，我们不会知道哪些请求在第 N 拍已经结束</p><p>但这并不影响最终输出的正确性。CPU 只使用已知信息规划，最多只会将已结束的请求多算一拍</p><ul><li>假设流水线正在不停 decode 一批请求，现在开始 Pre Schedule N+1 拍。在第 N 拍推理中存在两个请求 A、B，请求 A 会在第 N 拍采样出 EOS 从而结束，请求 B 不会结束</li><li>当我们 Pre N+1 时无法得知这些信息，目前看来 A、B 都未结束，因此他们都被加入了 N+1 拍的 batch</li><li>当我们 Post Schedule N 时发现 A 已经结束，因此在 A 请求上标记 finished</li><li>在 Pre Schedule N+2 的时候我们会发现 A 已经结束，从而将 A 请求移出 batch</li><li>这一过程里我们只是将已经 EOS 的请求 A 多算了一拍，新产生的无效 token 并未被输出</li></ul><hr><h2 id=futuremap>FutureMap</h2><p>观察 GPU 上的流水线，后一拍推理需要用到前一拍采样出的 token id 结果</p><p>显然我们不应该把前一拍的结果 d2h 到 CPU 再 h2d 回来给下一拍，因此我们需要一个显存上的 buffer 来存放可以直接在 GPU 上跨步传递的信息，这就是 <strong>FutureMap</strong></p><p>FutureMap 是显存上的一组持久 tensor，在 <code>Scheduler.init_overlap()</code> 中创建，容量对齐 <code>ReqToTokenPool</code>。也包含少量放在 CPU pinned memory 上的镜像 tensor 以便读写</p><h3 id=槽位号>槽位号</h3><ul><li><p>新请求在 <code>ingest_requests</code> 内被包装成 Req 对象塞入 waiting_queue 中</p></li><li><p><code>get_next_batch_to_run</code> 先尝试 <code>get_new_batch_prefill</code>，后者将 Req 对象从 waiting_queue 中取出并构造 ScheduleBatch 对象</p></li><li><p>ScheduleBatch 被返回前先调用 <code>ScheduleBatch.prepare_for_extend</code>，其中调用 <code>alloc_for_extend</code></p></li><li><p><code>alloc_for_extend</code> 会给请求分配 ReqToTokenPool 行，将必要信息 h2d，调用 <code>alloc_req_slots</code></p></li><li><p><code>alloc_req_slots</code> 会从 host 侧的 free_slots 取槽位号，保存槽位号到每个请求的 req.kv.req_pool_idx</p></li><li><p><code>alloc_for_extend</code> 在每个槽位号分配完成之后提取所有请求的槽位号建立索引 tensor</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>req_pool_indices</span> <span class=o>=</span> <span class=n>alloc_req_slots</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=n>batch</span><span class=o>.</span><span class=n>req_to_token_pool</span><span class=p>,</span> <span class=n>batch</span><span class=o>.</span><span class=n>reqs</span><span class=p>,</span> <span class=n>batch</span><span class=o>.</span><span class=n>tree_cache</span>
+</span></span><span class=line><span class=cl><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>req_pool_indices_cpu</span> <span class=o>=</span> <span class=n>torch</span><span class=o>.</span><span class=n>tensor</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=n>req_pool_indices</span><span class=p>,</span> <span class=n>dtype</span><span class=o>=</span><span class=n>torch</span><span class=o>.</span><span class=n>int64</span><span class=p>,</span> <span class=n>pin_memory</span><span class=o>=</span><span class=n>pin_memory</span>
+</span></span><span class=line><span class=cl><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>req_pool_indices_device</span> <span class=o>=</span> <span class=n>req_pool_indices_cpu</span><span class=o>.</span><span class=n>to</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=n>batch</span><span class=o>.</span><span class=n>device</span><span class=p>,</span> <span class=n>non_blocking</span><span class=o>=</span><span class=kc>True</span>
+</span></span><span class=line><span class=cl><span class=p>)</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><p>这两个索引最终会变成</p><ul><li><code>batch.req_pool_indices_cpu</code></li><li><code>batch.req_pool_indices</code></li></ul></li></ul><p>这部分的 h2d 操作全部插入在 schedule_stream 上</p><p>综上所述，在 Pre Schedule 阶段时，如果成功构造新 batch 则其中的请求被分配固定的槽位号，整个 batch 的槽位号索引 req_pool_indices 通过 schedule_stream 送到 GPU</p><h3 id=store-next-token-ids>Store next token ids</h3><p>FutureMap 中我们重点关注 <code>output_tokens_buf</code>，这是一个长度和总槽位数一致，保存 int64 的一维 tensor，也就是槽位域上的桶，用来保存前一步推理采样得到的 token ids</p><p><code>Scheduler.run_batch</code> 内部会通过 <code>self._forward_isolation</code> -> <code>batch_result = self.model_worker.forward_batch_generation</code> 获得一拍推理的结果 <code>batch_result</code></p><p>在不启用延迟 sample 的情况下，此时我们已经采样出了新 token，存放在 batch_result.next_token_ids 中</p><p><code>run_batch</code> 会调用 <code>_relay_forward_payload</code> 把 batch_result.next_token_ids 包装成 RelayPayload 对象</p><p>RelayPayload 对象传入 <code>FutureMap.stash</code> 函数，通过一次 scatter 保存进 FutureMap.output_tokens_buf 中</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=bp>self</span><span class=o>.</span><span class=n>output_tokens_buf</span><span class=p>[</span><span class=n>indices</span><span class=p>]</span> <span class=o>=</span> <span class=n>payload</span><span class=o>.</span><span class=n>bonus_tokens</span><span class=o>.</span><span class=n>to</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=bp>self</span><span class=o>.</span><span class=n>output_tokens_buf</span><span class=o>.</span><span class=n>dtype</span>
+</span></span><span class=line><span class=cl><span class=p>)</span>
+</span></span></code></pre></td></tr></table></div></div><p><code>_relay_forward_payload</code> 还会调用 <code>batch_result.copy_to_cpu</code>，把 next_token_ids、logprob、hidden_states 等信息通过 copy_stream d2h 传回 host 侧</p><h3 id=get-next-token-ids>Get next token ids</h3><p>在下一拍推理时，我们会在 <code>run_batch</code> 的 <code>resolve_forward_inputs</code> 调用中判断，如果采用普通的非投机解码，直接从 FutureMap.output_tokens_buf 来 gather 出 batch.req_pool_indices 即可拿到 input_ids</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>elif</span> <span class=n>batch</span><span class=o>.</span><span class=n>input_ids</span> <span class=ow>is</span> <span class=kc>None</span> <span class=ow>and</span> <span class=n>future_map</span><span class=o>.</span><span class=n>spec_algo</span><span class=o>.</span><span class=n>is_none</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=n>batch</span><span class=o>.</span><span class=n>input_ids</span> <span class=o>=</span> <span class=n>future_map</span><span class=o>.</span><span class=n>output_tokens_buf</span><span class=p>[</span><span class=n>batch</span><span class=o>.</span><span class=n>req_pool_indices</span><span class=p>]</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=batch-维护>Batch 维护</h3><p>一个 batch 在连续多拍 decode 期间其包含的请求可能发生变化</p><h4 id=请求退出>请求退出</h4><p>去除已完成的请求是通过在 <code>get_next_batch_to_run</code> 中对 batch 对象调用 <code>.filter_batch</code> 实现的</p><p>在 <code>filter_batch</code> 函数内部，CPU 先根据 finished 状态和 excluded 参数计算出要保留的请求的<strong>下标</strong>。这里的下标指的是相对于 <code>batch.req_pool_indices</code>，哪些位置的请求要被留下</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>if</span> <span class=n>keep_indices</span> <span class=ow>is</span> <span class=kc>None</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=nb>isinstance</span><span class=p>(</span><span class=n>reqs_to_exclude</span><span class=p>,</span> <span class=n>Req</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=n>reqs_to_exclude</span> <span class=o>=</span> <span class=p>[</span><span class=n>reqs_to_exclude</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>    <span class=k>elif</span> <span class=n>reqs_to_exclude</span> <span class=ow>is</span> <span class=kc>None</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=n>reqs_to_exclude</span> <span class=o>=</span> <span class=p>[]</span>
+</span></span><span class=line><span class=cl>    <span class=n>keep_indices</span> <span class=o>=</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>        <span class=n>i</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=n>i</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=nb>len</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>reqs</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=ow>not</span> <span class=bp>self</span><span class=o>.</span><span class=n>reqs</span><span class=p>[</span><span class=n>i</span><span class=p>]</span><span class=o>.</span><span class=n>finished</span><span class=p>()</span> <span class=ow>and</span> <span class=bp>self</span><span class=o>.</span><span class=n>reqs</span><span class=p>[</span><span class=n>i</span><span class=p>]</span> <span class=ow>not</span> <span class=ow>in</span> <span class=n>reqs_to_exclude</span>
+</span></span><span class=line><span class=cl>    <span class=p>]</span>
+</span></span></code></pre></td></tr></table></div></div><p>利用这个 keep_indices 我们构造出 tensor</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>keep_indices_device</span> <span class=o>=</span> <span class=n>torch</span><span class=o>.</span><span class=n>tensor</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=n>keep_indices</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>dtype</span><span class=o>=</span><span class=n>torch</span><span class=o>.</span><span class=n>int64</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>pin_memory</span><span class=o>=</span><span class=n>is_pin_memory_available</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>device</span><span class=p>),</span>
+</span></span><span class=line><span class=cl><span class=p>)</span><span class=o>.</span><span class=n>to</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>device</span><span class=p>,</span> <span class=n>non_blocking</span><span class=o>=</span><span class=kc>True</span><span class=p>)</span>
+</span></span></code></pre></td></tr></table></div></div><p>再利用该 tensor 对原有的 req_pool_indices 进行一次 gather 更新，由此去除不需要的请求</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=bp>self</span><span class=o>.</span><span class=n>req_pool_indices</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>req_pool_indices</span><span class=p>[</span><span class=n>keep_indices_device</span><span class=p>]</span>
+</span></span><span class=line><span class=cl><span class=bp>self</span><span class=o>.</span><span class=n>req_pool_indices_cpu</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>req_pool_indices_cpu</span><span class=p>[</span><span class=n>keep_indices</span><span class=p>]</span>
+</span></span></code></pre></td></tr></table></div></div><p>每次 <code>filter_batch</code> 都会触发 h2d 传输以及 gather 操作，这些操作被插入到 schedule_stream 中</p><h4 id=batch-合并>batch 合并</h4><p><code>batch.merge_batch(other)</code> 可以实现 batch 合并</p><p>合并只需要把 req 列表拼接，同时将 GPU 上的 req_pool_indices 也拼接即可，拼接命令插入到 schedule_stream</p><h4 id=新请求加入>新请求加入</h4><p>新请求总是需要先经过 prefill 再进入 decode 阶段</p><p>对于 prefill batch 或者 mixed batch 来说，其中的 prefill 请求在两拍之间的输入并不从 FutureMap 中 gather</p><p><code>prepare_for_extend</code> 会整理所有需要 prefill 的请求的 prompt，塞进 pinned CPU tensor，保存为 batch.prefill_input_ids_cpu</p><p>在 <code>run_batch</code> 中 forward 之前，<code>resolve_forward_inputs</code> 会把 prefill_input_ids_cpu 做 h2d 拷贝到 GPU，此命令插入到 forward_stream 中</p><p>在请求的 prefill 完成之后自然采样出第一个 token 填入 FutureMap 中，即可继续 decode</p><p>上面的逻辑很简单，但神秘的是 h2d 传输 prompt 的时机和传输 req_pool_indices 的时机完全不同</p><p>对比前面的介绍，早在 <code>get_next_batch_to_run</code> 中 req_pool_indices 的 h2d 就已经触发，指令在 schedule_stream 中。但 prefill_input_ids 不选择在此时 h2d，相反这里刻意只把 prompt 塞进 CPU memory</p><p>直到 <code>run_batch</code> 中先 <code>forward_stream.wait_stream(schedule_stream)</code>，再在 forward_stream 上触发 prompt h2d</p><p>因此 forward_stream 会被 prompt h2d 阻塞，这段时间不会像 req_pool_indices h2d 一样被 overlap，为什么？我还没研究明白</p><hr><p>假设第 t-1 batch 是 prefill batch，prefill 一轮之后全部完成转入 running_batch，第 t 轮 Pre Schedule 阶段新构造一个 prefill batch，两拍之间的流水线如下所示</p><p>最下面的 GPU 线等同于 forward_stream。为了表现同步逻辑，各阶段的比例和真实情况不同</p><p><img src=/p/wip-sglang-scheduler-%E8%A7%82%E6%B5%8B%E7%AC%94%E8%AE%B0/p2.png width=2549 height=558 srcset="/p/wip-sglang-scheduler-%E8%A7%82%E6%B5%8B%E7%AC%94%E8%AE%B0/p2_hu_6f45ce4612670460.png 480w, /p/wip-sglang-scheduler-%E8%A7%82%E6%B5%8B%E7%AC%94%E8%AE%B0/p2_hu_d6f2b1ff6f20eff0.png 1024w" loading=lazy class=gallery-image data-flex-grow=456 data-flex-basis=1096px></p><hr><h2 id=war-barrier>WAR barrier</h2><p>[WIP]</p><hr><hr><h2 id=ingest_requests>ingest_requests</h2><p><code>self.ingest_requests</code> 主要做如下动作</p><ul><li><p>调用 <code>request_receiver.recv_requests</code>。其内部执行一个 while 循环，不断从 ZMQ 队列里非阻塞拉取请求，直到 ZMQ 队列空或者拉取足够 max_recv_per_poll 次</p><p>每次拉取到的可能是包含单个请求的 TokenizedGenerateReqInput，或者包含一组请求的 BatchTokenizedGenerateReqInput</p></li><li><p>调用 <code>process_input_requests</code>。遍历拉取到的所有请求，对于每个 TokenizedGenerateReqInput 调用 <code>handle_generate_request</code>（对于 BatchTokenizedGenerateReqInput 则是遍历其内部的每个请求调用 <code>handle_generate_request</code>），该函数将创建 Req 对象</p></li><li><p><code>_add_request_to_queue</code> 考虑每个 Req 对象该被推到哪个队列里。对于非 PD 分离情况，所有的 Req 全部塞到 waiting_queue 里</p></li></ul><p>可见，通常情况下新请求会全部变成 Req 被塞到 waiting_queue 里，等待调度</p><hr><hr><h2 id=get_next_batch_to_run>get_next_batch_to_run</h2><p><strong>我们将先假设一个 batch 的 forward_mode 只能是 EXTEND 或者 DECODE</strong>。后面讨论 MIXED 的处理</p><p><code>self.get_next_batch_to_run</code> 做如下动作</p><hr><h3 id=处理上一个-batch-的影响>处理上一个 batch 的影响</h3><p>对于 forward_mode 为 EXTEND 的 batch（prefill batch），它由<strong>至多一个 chunked_req</strong>，外加若干无需 chunked 的请求构成</p><p>如果上一个 batch 是 prefill batch，此时应该把所有做完 prefill 的请求加入 <strong>runnning_batch</strong>。running_batch 是当前正等待 decode 的 batch。chunked_req 因为还未完成 prefill 所以不该加入 running_batch，需要特殊剔除</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=c1># Scheduler.event_loop_normal</span>
+</span></span><span class=line><span class=cl><span class=c1>#  - Scheduler.get_next_batch_to_run</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>chunked_req_to_exclude</span> <span class=o>=</span> <span class=nb>set</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=bp>self</span><span class=o>.</span><span class=n>chunked_req</span> <span class=ow>is</span> <span class=ow>not</span> <span class=kc>None</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>chunked_req_to_exclude</span><span class=o>.</span><span class=n>add</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>chunked_req</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=bp>self</span><span class=o>.</span><span class=n>chunked_req</span><span class=o>.</span><span class=n>extend_range</span><span class=o>.</span><span class=n>end</span> <span class=o>&gt;</span> <span class=nb>len</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>chunked_req</span><span class=o>.</span><span class=n>prefix_indices</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>stash_chunked_request</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>chunked_req</span><span class=p>)</span>
+</span></span></code></pre></td></tr></table></div></div><blockquote><p>这里 <code>self.stash_chunked_request</code> 是用来将 chunked_req 刚刚算出来的一部分 KV 注册到 RadixCache 树里，以便下一个 chunk 通过 <code>match_prefix</code> 复用这些 KV</p><p>对于那些无需 chunked 的请求，它们在 prefill 完成时的 <code>process_batch_result_prefill</code> 里被处理（具体来说，是处理所有 req.inflight_middle_chunks &lt;= 0 的请求），如果请求已经结束则释放 KV，否则更新 RadixCache 树结点</p><p>extend_range.end 是上一个 chunk 的 extend 终点，len(prefix_indices) 是 RadixCache 里已经缓存的 token 数。这两个值可能相等是因为 hybrid-SWA 场景下可能因为内存不足从而让一个 chunked_req 进入 parked 状态，跳过一轮等 SWA 内存释放之后再继续分配新 chunk</p><p>chunked_req_to_exclude 设为 set 的原因是在 PP 场景等情况下 chunked_req 可能有多个来源，set 也起到去重作用</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>if</span> <span class=n>last_batch</span> <span class=ow>and</span> <span class=n>last_batch</span><span class=o>.</span><span class=n>forward_mode</span><span class=o>.</span><span class=n>is_extend</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=n>last_batch</span><span class=o>.</span><span class=n>filter_batch</span><span class=p>(</span><span class=n>chunked_req_to_exclude</span><span class=o>=</span><span class=nb>list</span><span class=p>(</span><span class=n>chunked_req_to_exclude</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=ow>not</span> <span class=n>last_batch</span><span class=o>.</span><span class=n>is_empty</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=n>running_batch</span><span class=o>.</span><span class=n>is_empty</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>            <span class=n>running_batch</span> <span class=o>=</span> <span class=n>last_batch</span>
+</span></span><span class=line><span class=cl>        <span class=k>else</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=n>running_batch</span><span class=o>.</span><span class=n>merge_batch</span><span class=p>(</span><span class=n>last_batch</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>            
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=n>running_batch</span><span class=o>.</span><span class=n>is_prefill_only</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>running_batch</span><span class=o>.</span><span class=n>filter_batch</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>running_batch</span><span class=o>.</span><span class=n>is_empty</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>        <span class=n>running_batch</span><span class=o>.</span><span class=n>batch_is_full</span> <span class=o>=</span> <span class=kc>False</span>
+</span></span></code></pre></td></tr></table></div></div><blockquote><p><code>last_batch.filter_batch</code> 的作用是去除已结束的请求（finished_reason != None）和被排除的 chunked_req</p><p><code>merge_batch</code> 做的是 tensor 级的 torch.cat，把必要的信息做拼接</p><p>is_prefill_only 的定义是 max_new_tokens == 0。第二个 if 是在 overlap 模式下清除 prefill-only 请求的过程。overlap 的调度模式我们后续再梳理</p></blockquote><hr><h3 id=尝试构造新-prefill-batch>尝试构造新 prefill batch</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>if</span> <span class=bp>self</span><span class=o>.</span><span class=n>dllm_config</span> <span class=ow>is</span> <span class=ow>not</span> <span class=kc>None</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>new_batch</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>get_new_batch_dllm</span><span class=p>(</span><span class=n>running_batch</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=k>elif</span> <span class=bp>self</span><span class=o>.</span><span class=n>_should_defer_prefill</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=n>new_batch</span> <span class=o>=</span> <span class=kc>None</span>
+</span></span><span class=line><span class=cl><span class=k>else</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>prefill_plan</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>get_new_batch_prefill</span><span class=p>(</span><span class=n>running_batch</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>new_batch</span> <span class=o>=</span> <span class=n>prefill_plan</span><span class=o>.</span><span class=n>batch_to_run</span>
+</span></span><span class=line><span class=cl>    <span class=n>running_batch</span> <span class=o>=</span> <span class=n>prefill_plan</span><span class=o>.</span><span class=n>running_batch</span>
+</span></span></code></pre></td></tr></table></div></div><p>在 SGLang 中，我们优先处理 prefill</p><p>具体来说，我们每一拍都尝试构造 prefill batch，如果能构造出来就运行它，否则运行 running_batch</p><p>我们构造 prefill batch 时通过检查 KV cache 的剩余量来限制 batch 中的请求数，以确保完成 prefill 之后这些请求能拿着分配好的内存直接加入 running_batch，不会塞不下</p><hr><h4 id=get_new_batch_prefill---part1>get_new_batch_prefill - part1</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=c1># Scheduler.event_loop_normal</span>
+</span></span><span class=line><span class=cl><span class=c1>#  - Scheduler.get_next_batch_to_run</span>
+</span></span><span class=line><span class=cl><span class=c1>#     - Scheduler.get_new_batch_prefill</span>
+</span></span><span class=line><span class=cl><span class=c1>#        - Scheduler._get_new_batch_prefill_raw</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=p>(</span><span class=n>running_batch</span><span class=o>.</span><span class=n>batch_is_full</span> <span class=ow>or</span> <span class=nb>len</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>waiting_queue</span><span class=p>)</span> <span class=o>==</span> <span class=mi>0</span><span class=p>)</span> <span class=ow>and</span> <span class=bp>self</span><span class=o>.</span><span class=n>chunked_req</span> <span class=ow>is</span> <span class=kc>None</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=kc>None</span><span class=p>,</span> <span class=n>running_batch</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=bp>self</span><span class=o>.</span><span class=n>get_num_allocatable_reqs</span><span class=p>(</span><span class=n>running_bs</span><span class=p>,</span> <span class=n>running_batch</span><span class=o>=</span><span class=n>running_batch</span><span class=p>)</span> <span class=o>&lt;=</span> <span class=mi>0</span> <span class=ow>and</span> <span class=bp>self</span><span class=o>.</span><span class=n>chunked_req</span> <span class=ow>is</span> <span class=kc>None</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>running_batch</span><span class=o>.</span><span class=n>batch_is_full</span> <span class=o>=</span> <span class=kc>True</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=kc>None</span><span class=p>,</span> <span class=n>running_batch</span>
+</span></span></code></pre></td></tr></table></div></div><blockquote><p>首先做一些前置检查</p><p>如果上一拍有未完成的 chunked_req，那么这一拍必须构造一个 prefill batch，否则当 running_batch 塞不下其他请求，或者已经没有新请求时，我们放弃生成 prefill batch</p><p>检查剩余内存的情况，如果 running_batch 已经无法加入其他请求则标记 batch_is_full 并放弃生成 prefill batch</p><p><code>get_num_allocatable_reqs</code> 计算 min(pp_budget, req_to_token_pool.available_size())，即 PP 微批次预算和 KV slot 可用数取最小</p></blockquote><p>然后对 waiting_queue 按策略排序，默认策略是先到先服务</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=bp>self</span><span class=o>.</span><span class=n>policy</span><span class=o>.</span><span class=n>calc_priority</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>waiting_queue</span><span class=p>,</span> <span class=n>running_batch</span><span class=p>,</span> <span class=n>processed_tokens</span><span class=o>=</span><span class=bp>self</span><span class=o>.</span><span class=n>processed_tokens_counter</span><span class=p>)</span>
+</span></span></code></pre></td></tr></table></div></div><p>接下来构造 <strong>PrefillAdder</strong>。它是构造 prefill batch 时使用的预算管理器</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>adder</span> <span class=o>=</span> <span class=n>PrefillAdder</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=bp>self</span><span class=o>.</span><span class=n>page_size</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=bp>self</span><span class=o>.</span><span class=n>tree_cache</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=bp>self</span><span class=o>.</span><span class=n>token_to_kv_pool_allocator</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>running_batch</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=bp>self</span><span class=o>.</span><span class=n>new_token_ratio_tracker</span><span class=o>.</span><span class=n>current</span><span class=p>,</span>     <span class=c1># 预留 decode token 的比例</span>
+</span></span><span class=line><span class=cl>    <span class=bp>self</span><span class=o>.</span><span class=n>max_prefill_tokens</span><span class=p>,</span>                  <span class=c1># 单 batch 最大 prefill token 数</span>
+</span></span><span class=line><span class=cl>    <span class=n>chunked_prefill_size</span><span class=p>,</span>                     <span class=c1># NPU 上 8192</span>
+</span></span><span class=line><span class=cl>    <span class=n>running_bs</span> <span class=k>if</span> <span class=bp>self</span><span class=o>.</span><span class=n>is_mixed_chunk</span> <span class=k>else</span> <span class=mi>0</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=o>...</span>
+</span></span><span class=line><span class=cl>    <span class=n>max_prefill_bs</span><span class=o>=</span><span class=nb>int</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>max_prefill_bs</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>    <span class=n>max_running_requests</span><span class=o>=</span><span class=bp>self</span><span class=o>.</span><span class=n>max_running_requests</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=o>...</span>
+</span></span><span class=line><span class=cl><span class=p>)</span>
+</span></span></code></pre></td></tr></table></div></div><p>首先考虑未完成的 chunked_req，优先处理它</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>if</span> <span class=bp>self</span><span class=o>.</span><span class=n>chunked_req</span> <span class=ow>is</span> <span class=ow>not</span> <span class=kc>None</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=bp>self</span><span class=o>.</span><span class=n>chunked_req</span><span class=o>.</span><span class=n>init_next_round_input</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=bp>self</span><span class=o>.</span><span class=n>chunked_req</span> <span class=o>=</span> <span class=n>adder</span><span class=o>.</span><span class=n>add_chunked_req</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>chunked_req</span><span class=p>)</span>
+</span></span></code></pre></td></tr></table></div></div><blockquote><p>这里 <code>adder.add_chunked_req</code> 会决定本次 chunk 的大小并设置 extend 范围等信息。如果本次 chunk 完还有剩余未 prefill 的 token，那么该函数返回 req 本身即保持 self.chunked_req 不变，否则返回 None 以清空 self.chunked_req</p></blockquote><p>然后遍历 waiting_queue 尝试准入请求到 PrefillAdder</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>for</span> <span class=n>req</span> <span class=ow>in</span> <span class=bp>self</span><span class=o>.</span><span class=n>waiting_queue</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>running_batch</span><span class=o>.</span><span class=n>batch_is_full</span><span class=p>:</span> <span class=c1># 检查 batch 是否满</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=ow>not</span> <span class=bp>self</span><span class=o>.</span><span class=n>enable_priority_preemption</span> <span class=ow>or</span>
+</span></span><span class=line><span class=cl>        	<span class=ow>not</span> <span class=n>adder</span><span class=o>.</span><span class=n>preempt_to_schedule</span><span class=p>(</span><span class=n>req</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>            <span class=k>break</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=bp>self</span><span class=o>.</span><span class=n>enable_hicache_storage</span><span class=p>:</span> <span class=c1># HiCache 存储预取检查</span>
+</span></span><span class=line><span class=cl>        <span class=n>prefetch_done</span> <span class=o>=</span> 
+</span></span><span class=line><span class=cl>        	<span class=bp>self</span><span class=o>.</span><span class=n>tree_cache</span><span class=o>.</span><span class=n>check_prefetch_progress</span><span class=p>(</span><span class=n>req</span><span class=o>.</span><span class=n>cache_request_handle</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=ow>not</span> <span class=n>prefetch_done</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=k>continue</span>  <span class=c1># 跳过未完成预取的请求</span>
+</span></span><span class=line><span class=cl>        <span class=n>loaded_tokens</span><span class=p>,</span> <span class=n>loaded_start</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>tree_cache</span><span class=o>.</span><span class=n>pop_prefetch_loaded_span</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>            <span class=n>req</span><span class=o>.</span><span class=n>cache_request_handle</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=n>loaded_tokens</span> <span class=o>&gt;</span> <span class=mi>0</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=n>req</span><span class=o>.</span><span class=n>storage_hit_length</span> <span class=o>=</span> <span class=n>loaded_tokens</span>
+</span></span><span class=line><span class=cl>            <span class=n>req</span><span class=o>.</span><span class=n>storage_hit_start</span> <span class=o>=</span> <span class=n>loaded_start</span>
+</span></span><span class=line><span class=cl>            <span class=n>req</span><span class=o>.</span><span class=n>host_hit_is_storage</span> <span class=o>=</span> <span class=kc>False</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>req</span><span class=o>.</span><span class=n>init_next_round_input</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>tree_cache</span><span class=p>)</span>  <span class=c1># 匹配 RadixCache 前缀</span>
+</span></span><span class=line><span class=cl>    <span class=n>res</span> <span class=o>=</span> <span class=n>adder</span><span class=o>.</span><span class=n>add_one_req</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>        <span class=n>req</span><span class=p>,</span> <span class=n>has_chunked_req</span><span class=o>=</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>chunked_req</span> <span class=ow>is</span> <span class=ow>not</span> <span class=kc>None</span><span class=p>),</span> <span class=o>...</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>res</span> <span class=o>!=</span> <span class=n>AddReqResult</span><span class=o>.</span><span class=n>CONTINUE</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=n>res</span> <span class=o>==</span> <span class=n>AddReqResult</span><span class=o>.</span><span class=n>NO_TOKEN</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=n>running_batch</span><span class=o>.</span><span class=n>batch_is_full</span> <span class=o>=</span> <span class=kc>True</span>
+</span></span><span class=line><span class=cl>        <span class=k>break</span>
+</span></span></code></pre></td></tr></table></div></div><blockquote><p>首先如果 running_batch 满了应该直接 break，但例外情况是启用了优先级抢占且当前请求是一个优先请求。抢占的逻辑会在后面梳理</p><p>HiCache 即 Hierarchical Cache，SGLang 的层次化 KV cache 系统。包括三级：</p><p>L1: Device KV Pool (HBM) // RadixCache 管理的页面化 KV cache
+L2: Host Memory (CPU DRAM) // HostKVCache, 通过 pinned memory
+L3: Storage Backend // 可选的外部存储（文件、共享内存、远程存储）</p><p>如果不启用 HiCache，当 L1 满时被 LRU evict 的 KV cache 会永久丢失。启用 HiCache 后，L1 满时会尝试迁移到 host memory。配置了 hicache_storage_backend 后还会考虑 L3 的空间</p><p>当一个新请求被 Scheduler 放入 waiting_queue 时，如果发现该请求的 prompt 前缀在 L3 中有命中，就会异步发起 L3 -> L2 的 KV cache 加载，提交一个 prefetch_from_storage 请求</p><p>此处遍历 waiting_queue 时我们会检查请求的 prefetch 是否完成。<code>pop_prefetch_loaded_span</code> 取出已加载到 L2 的 token 数量和起始位置。在后续 <code>req.init_next_round_input(self.tree_cache)</code> 做前缀匹配时，这些 L3 加载的 token 会被当做已命中的前缀</p></blockquote><hr><h4 id=adderadd_one_req>adder.add_one_req</h4><p>它是 PrefillAdder 中最核心的方法，决定 waiting_queue 中的一个请求能否被放入正在构造的 prefill batch，以及参与 extend 的形状</p><h5 id=step1-快速退出检查>step1 快速退出检查</h5><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=c1># Scheduler.event_loop_normal</span>
+</span></span><span class=line><span class=cl><span class=c1># └─ Scheduler.get_next_batch_to_run</span>
+</span></span><span class=line><span class=cl><span class=c1>#    └─ Scheduler.get_new_batch_prefill</span>
+</span></span><span class=line><span class=cl><span class=c1>#       └─ Scheduler._get_new_batch_prefill_raw</span>
+</span></span><span class=line><span class=cl><span class=c1>#          └─ PrefillAdder.add_one_req</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=p>(</span><span class=n>x</span> <span class=o>:=</span> <span class=bp>self</span><span class=o>.</span><span class=n>prefill_max_requests</span><span class=p>)</span> <span class=ow>is</span> <span class=ow>not</span> <span class=kc>None</span> <span class=ow>and</span> <span class=nb>len</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>can_run_list</span><span class=p>)</span> <span class=o>&gt;=</span> <span class=n>x</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>AddReqResult</span><span class=o>.</span><span class=n>OTHER</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=n>req</span><span class=o>.</span><span class=n>sampling_params</span><span class=o>.</span><span class=n>ignore_eos</span> <span class=ow>and</span> <span class=nb>getattr</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>tree_cache</span><span class=p>,</span> <span class=s2>&#34;disable&#34;</span><span class=p>,</span> <span class=kc>True</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=bp>self</span><span class=o>.</span><span class=n>add_one_req_ignore_eos</span><span class=p>(</span><span class=n>req</span><span class=p>)</span>
+</span></span></code></pre></td></tr></table></div></div><blockquote><p>如果设置了单次 prefill 的请求数上限，检查是否已经达到了上限</p><p>如果 ignore_eos=True 且 RadixCache 被禁用，走简化路径 <code>add_one_req_ignore_eos</code></p></blockquote><h5 id=step2-计算内存占用>step2 计算内存占用</h5><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>max_new</span> <span class=o>=</span> <span class=nb>min</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=nb>max</span><span class=p>(</span><span class=n>req</span><span class=o>.</span><span class=n>sampling_params</span><span class=o>.</span><span class=n>max_new_tokens</span> <span class=o>-</span> <span class=nb>len</span><span class=p>(</span><span class=n>req</span><span class=o>.</span><span class=n>output_ids</span><span class=p>),</span> <span class=mi>0</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>    <span class=n>CLIP_MAX_NEW_TOKENS</span><span class=p>,</span>
+</span></span><span class=line><span class=cl><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>cand_extend_input_len</span> <span class=o>=</span> <span class=nb>len</span><span class=p>(</span><span class=n>req</span><span class=o>.</span><span class=n>full_untruncated_fill_ids</span><span class=p>)</span> <span class=o>-</span> <span class=nb>len</span><span class=p>(</span><span class=n>req</span><span class=o>.</span><span class=n>prefix_indices</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>total_tokens</span> <span class=o>=</span> <span class=n>cand_extend_input_len</span> <span class=o>+</span> <span class=n>max_new</span> <span class=o>+</span> <span class=bp>self</span><span class=o>.</span><span class=n>page_size</span>
+</span></span><span class=line><span class=cl><span class=n>mamba_gap_reserve</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>_mamba_gap_budget_for_req</span><span class=p>(</span><span class=n>req</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>total_tokens</span> <span class=o>+=</span> <span class=n>mamba_gap_reserve</span>
+</span></span></code></pre></td></tr></table></div></div><blockquote><p>max_new 是预计要 decode 的 token 数量。对于新请求来说 output_ids 为空，但当 KV pool OOM 时可能触发 retract，请求释放所有 KV cache 之后放回 waiting_queue，此时 req.output_ids 不为空</p><p>CLIP_MAX_NEW_TOKENS 设定为 4096</p><p>cand_extend_input_len 表示需要 prefill 的 token 数量，由总长减去 RadixCache 命中的长度得到</p><p>total_tokens 是该请求准入之后需要在 KV pool 里预留的总 token 数。包括新 prefill、新 decode 以及分页分配器的对齐开销（可能多占一页）</p></blockquote><h5 id=step3-准入决策>step3 准入决策</h5><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>with</span> <span class=bp>self</span><span class=o>.</span><span class=n>_lock_node</span><span class=p>(</span><span class=n>req</span><span class=o>.</span><span class=n>last_node</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=n>admission</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>_select_prefill_admission</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>        <span class=n>req</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=n>total_tokens</span><span class=o>=</span><span class=n>total_tokens</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=n>host_hit_length</span><span class=o>=</span><span class=n>req</span><span class=o>.</span><span class=n>host_hit_length</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=n>swa_host_hit_length</span><span class=o>=</span><span class=n>req</span><span class=o>.</span><span class=n>swa_host_hit_length</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=n>truncation_align_size</span><span class=o>=</span><span class=n>truncation_align_size</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=nb>isinstance</span><span class=p>(</span><span class=n>admission</span><span class=p>,</span> <span class=n>AddReqResult</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>admission</span>
+</span></span></code></pre></td></tr></table></div></div><blockquote><p>对 RadixCache 树上的结点加锁之后进行决策。决策部分包装在 _select_prefill_admission 里</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=c1># Scheduler.event_loop_normal</span>
+</span></span><span class=line><span class=cl><span class=c1># └─ Scheduler.get_next_batch_to_run</span>
+</span></span><span class=line><span class=cl><span class=c1>#    └─ Scheduler.get_new_batch_prefill</span>
+</span></span><span class=line><span class=cl><span class=c1>#       └─ Scheduler._get_new_batch_prefill_raw</span>
+</span></span><span class=line><span class=cl><span class=c1>#          └─ PrefillAdder.add_one_req</span>
+</span></span><span class=line><span class=cl><span class=c1>#             └─ PrefillAdder._select_prefill_admission</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>prefix_len</span> <span class=o>=</span> <span class=nb>len</span><span class=p>(</span><span class=n>req</span><span class=o>.</span><span class=n>prefix_indices</span><span class=p>)</span> <span class=o>+</span> <span class=n>host_hit_length</span>
+</span></span><span class=line><span class=cl><span class=n>extend_len</span> <span class=o>=</span> <span class=nb>len</span><span class=p>(</span><span class=n>req</span><span class=o>.</span><span class=n>full_untruncated_fill_ids</span><span class=p>)</span> <span class=o>-</span> <span class=n>prefix_len</span>
+</span></span><span class=line><span class=cl><span class=n>input_tokens</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>ceil_paged_tokens</span><span class=p>(</span><span class=n>extend_len</span><span class=p>)</span>
+</span></span></code></pre></td></tr></table></div></div><blockquote><p>这里又计算了一遍，prefix_len 和 extend_len 额外考虑到了 host 侧 cache 的缓存命中，ceil_paged_tokens 依然是按照 page_size 分页向上取整</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>can_admit</span><span class=p>,</span> <span class=n>chunk_tokens_limit</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>_check_prefill_budget</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=n>req</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>extend_input_len</span><span class=o>=</span><span class=n>extend_len</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>total_tokens</span><span class=o>=</span><span class=n>total_tokens</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>swa_host_hit_length</span><span class=o>=</span><span class=n>swa_host_hit_length</span><span class=p>,</span>
+</span></span><span class=line><span class=cl><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=ow>not</span> <span class=n>can_admit</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>AddReqResult</span><span class=o>.</span><span class=n>NO_TOKEN</span>
+</span></span></code></pre></td></tr></table></div></div><blockquote><p><code>_check_prefill_budget</code> 检查 total_tokens 是否超过了 KV pool 剩余的总预算 rem_total_tokens，如果超过了则返回 can_admit=False</p><p>如果可以准入返回 chunk_tokens_limit 表示本次 chunk 能用的最大 token 数量</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>if</span> <span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=bp>self</span><span class=o>.</span><span class=n>rem_chunk_tokens</span> <span class=ow>is</span> <span class=kc>None</span>          <span class=c1># chunked prefill 禁用</span>
+</span></span><span class=line><span class=cl>    <span class=ow>and</span> <span class=bp>self</span><span class=o>.</span><span class=n>can_run_list</span>                  <span class=c1># batch 中已有请求</span>
+</span></span><span class=line><span class=cl>    <span class=ow>and</span> <span class=n>input_tokens</span> <span class=o>&gt;=</span> <span class=bp>self</span><span class=o>.</span><span class=n>rem_input_tokens</span>  <span class=c1># 本次输入超过 batch 上限</span>
+</span></span><span class=line><span class=cl><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>AddReqResult</span><span class=o>.</span><span class=n>OTHER</span>
+</span></span></code></pre></td></tr></table></div></div><blockquote><p>当禁用了 chunked prefill，如果当前 batch 不为空并且当前请求所需的 prefill token 数量大于剩余 prefill 预算，则拒绝准入</p><p>注意这里的 rem_input_tokens 是一个软约束，只用来限制单次 prefill 量以确保请求的 TTFT；而之前的 rem_total_tokens 是 KV cache 中包含可 evict 部分的总内存，是硬件约束</p><p>判断 self.can_run_list 为空，其实就是在判断当前请求是否是第一个被考虑的请求。如果是第一个被考虑的请求那么可以无视 rem_input_tokens 的软约束。因为如果不 chunk 并且还一直限制每 batch 的 prefill 量的话，超过这个阈值的请求永远不可能进入 batch</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>is_chunked</span> <span class=o>=</span> <span class=kc>False</span>
+</span></span><span class=line><span class=cl><span class=n>max_new_tokens</span> <span class=o>=</span> <span class=nb>min</span><span class=p>(</span><span class=n>req</span><span class=o>.</span><span class=n>sampling_params</span><span class=o>.</span><span class=n>max_new_tokens</span><span class=p>,</span> <span class=n>CLIP_MAX_NEW_TOKENS</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>chunk_fit_tokens</span> <span class=o>=</span> <span class=n>extend_len</span> <span class=k>if</span> <span class=bp>self</span><span class=o>.</span><span class=n>exact_chunk_fill</span> <span class=k>else</span> <span class=n>input_tokens</span>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=n>chunk_tokens_limit</span> <span class=ow>is</span> <span class=ow>not</span> <span class=kc>None</span> <span class=ow>and</span> <span class=n>chunk_fit_tokens</span> <span class=o>&gt;</span> <span class=n>chunk_tokens_limit</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=c1># 需要切分</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=bp>self</span><span class=o>.</span><span class=n>exact_chunk_fill</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=n>extend_len</span> <span class=o>=</span> <span class=n>chunk_tokens_limit</span>
+</span></span><span class=line><span class=cl>    <span class=k>else</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=n>extend_len</span> <span class=o>=</span> <span class=n>chunk_tokens_limit</span> <span class=o>//</span> <span class=bp>self</span><span class=o>.</span><span class=n>page_size</span> <span class=o>*</span> <span class=bp>self</span><span class=o>.</span><span class=n>page_size</span>
+</span></span><span class=line><span class=cl>        <span class=c1># page 对齐</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>    <span class=c1># truncation_align_size 对齐（某些 backend 需要特定对齐）</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>truncation_align_size</span> <span class=ow>is</span> <span class=ow>not</span> <span class=kc>None</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=n>extend_len</span> <span class=o>=</span> <span class=n>extend_len</span> <span class=o>//</span> <span class=n>truncation_align_size</span> <span class=o>*</span> <span class=n>truncation_align_size</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>    <span class=n>end</span> <span class=o>=</span> <span class=p>(</span><span class=n>prefix_len</span> <span class=o>+</span> <span class=n>extend_len</span><span class=p>)</span> <span class=o>//</span> <span class=bp>self</span><span class=o>.</span><span class=n>page_size</span> <span class=o>*</span> <span class=bp>self</span><span class=o>.</span><span class=n>page_size</span>
+</span></span><span class=line><span class=cl>    <span class=n>extend_len</span> <span class=o>=</span> <span class=n>end</span> <span class=o>-</span> <span class=n>prefix_len</span>
+</span></span><span class=line><span class=cl>    <span class=n>is_chunked</span> <span class=o>=</span> <span class=kc>True</span>
+</span></span><span class=line><span class=cl>    <span class=n>max_new_tokens</span> <span class=o>=</span> <span class=mi>0</span>   <span class=c1># chunked 中间块不设置 decode token</span>
+</span></span></code></pre></td></tr></table></div></div><blockquote><p>这里我们判断一个请求是否需要被 chunked</p><p>chunk_fit_tokens 是需要被 prefill 的总长度，默认情况下 input_tokens 是按照 page 对齐的，如果开启了 exact_chunk_fill 的话改为直接使用 extend_len</p><p>chunk_tokens_limit 是我们前文从 KV pool 预算检查中返回的本次 chunk 最大 token 数。如果需要被 prefill 的总长度超过了这个阈值说明需要切分 chunk</p><p>内层的两个 if 将 extend_len 赋值为 chunk_tokens_limit 的 page 对齐长度或者精确值，同时考虑是否启用特定的截断对齐</p><p>最后计算出按 page 对齐的 end，获得本次最终 extend_len，并标记 is_chunked=True</p></blockquote><p>值得注意的是，一旦之前有某个请求被设置为 chunked，那么切出来的这个 chunk 会占用当前 batch 的所有 chunk token 预算，所以不可能出现有两个请求都收到了非 None 的 chunk_tokens_limit，即每个 batch 都只会有一个 chunked 请求</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>return</span> <span class=n>_PrefillAdmission</span><span class=p>(</span><span class=n>prefix_len</span><span class=p>,</span> <span class=n>extend_len</span><span class=p>,</span> <span class=n>max_new_tokens</span><span class=p>,</span> <span class=n>is_chunked</span><span class=p>)</span>
+</span></span></code></pre></td></tr></table></div></div><blockquote><p>_PrefillAdmission 是一个 dataclass，描述了该请求应该以什么形状准入</p><ul><li>prefix_len：已缓存的前缀长度，包含 host 中的缓存</li><li>extend_len：本轮要 prefill 的 token 数</li><li>max_new_tokens：该请求需要给 decode 预留的 token 数</li><li>is_chunked：是否触发切分</li></ul></blockquote><h5 id=step4-prefilldelayer-检查>step4 PrefillDelayer 检查</h5><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=c1># Scheduler.event_loop_normal</span>
+</span></span><span class=line><span class=cl><span class=c1># └─ Scheduler.get_next_batch_to_run</span>
+</span></span><span class=line><span class=cl><span class=c1>#    └─ Scheduler.get_new_batch_prefill</span>
+</span></span><span class=line><span class=cl><span class=c1>#       └─ Scheduler._get_new_batch_prefill_raw</span>
+</span></span><span class=line><span class=cl><span class=c1>#          └─ PrefillAdder.add_one_req</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 下面的片段紧接在 _select_prefill_admission 调用之后，位于 with 块中</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>prefill_delayer_single_pass</span> <span class=ow>is</span> <span class=ow>not</span> <span class=kc>None</span><span class=p>)</span> <span class=ow>and</span> <span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=ow>not</span> <span class=bp>self</span><span class=o>.</span><span class=n>prefill_delayer_single_pass</span><span class=o>.</span><span class=n>negotiate_should_allow_prefill</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>        <span class=n>local_prefillable</span><span class=o>=</span><span class=kc>True</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=n>running_batch</span><span class=o>=</span><span class=bp>self</span><span class=o>.</span><span class=n>running_batch</span><span class=o>.</span><span class=n>batch_size</span><span class=p>(),</span>
+</span></span><span class=line><span class=cl>        <span class=n>max_prefill_bs</span><span class=o>=</span><span class=bp>self</span><span class=o>.</span><span class=n>max_prefill_bs</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=n>max_running_requests</span><span class=o>=</span><span class=bp>self</span><span class=o>.</span><span class=n>max_running_requests</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=n>waiting_queue_len</span><span class=o>=</span><span class=bp>self</span><span class=o>.</span><span class=n>waiting_queue_len</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>AddReqResult</span><span class=o>.</span><span class=n>OTHER</span>
+</span></span></code></pre></td></tr></table></div></div><blockquote><p>这里会尝试使用可选的 PrefillDelayer 检查是否应该延迟这个 prefill。在 running batch 较大或内存压力较高时，可以用它延迟新的 prefill 以优先保证 decode 吞吐</p></blockquote><h5 id=step5-host-cache-load-back>step5 Host cache load-back</h5><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>if</span> <span class=n>req</span><span class=o>.</span><span class=n>needs_host_load_back</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=n>promised_host_hit</span> <span class=o>=</span> <span class=n>req</span><span class=o>.</span><span class=n>host_hit_length</span>
+</span></span><span class=line><span class=cl>    <span class=n>loaded</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>tree_cache</span><span class=o>.</span><span class=n>init_load_back</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>        <span class=n>InitLoadBackParams</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>            <span class=n>best_match_node</span><span class=o>=</span><span class=n>req</span><span class=o>.</span><span class=n>best_match_node</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=n>host_hit_length</span><span class=o>=</span><span class=n>req</span><span class=o>.</span><span class=n>host_hit_length</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=n>req</span><span class=o>=</span><span class=n>req</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>loaded</span> <span class=ow>is</span> <span class=kc>None</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>AddReqResult</span><span class=o>.</span><span class=n>OTHER</span>
+</span></span><span class=line><span class=cl>    <span class=n>new_indices</span><span class=p>,</span> <span class=n>req</span><span class=o>.</span><span class=n>last_node</span> <span class=o>=</span> <span class=n>loaded</span>
+</span></span><span class=line><span class=cl>    <span class=n>req</span><span class=o>.</span><span class=n>host_loaded_length</span> <span class=o>=</span> <span class=nb>len</span><span class=p>(</span><span class=n>new_indices</span><span class=p>)</span>
+</span></span></code></pre></td></tr></table></div></div><blockquote><p>如果 host_hit_length > 0 说明 host 中有命中但是没有加载到 device 的 KV cache 则需要一次 h2d load</p><p><code>self.tree_cache.init_load_back</code> 加载 KV 到 device 后返回新的 prefix_indices 和新的 last_node</p></blockquote><h5 id=step6-提交准入>step6 提交准入</h5><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=bp>self</span><span class=o>.</span><span class=n>_commit_prefill_admission</span><span class=p>(</span><span class=n>req</span><span class=p>,</span> <span class=n>admission</span><span class=p>,</span> <span class=n>mamba_gap_reserve</span><span class=p>)</span>
+</span></span></code></pre></td></tr></table></div></div><p><code>_commit_prefill_admission</code> 会根据 admission 设置一些额外内容</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=c1># Scheduler.event_loop_normal</span>
+</span></span><span class=line><span class=cl><span class=c1># └─ Scheduler.get_next_batch_to_run</span>
+</span></span><span class=line><span class=cl><span class=c1>#    └─ Scheduler.get_new_batch_prefill</span>
+</span></span><span class=line><span class=cl><span class=c1>#       └─ Scheduler._get_new_batch_prefill_raw</span>
+</span></span><span class=line><span class=cl><span class=c1>#          └─ PrefillAdder.add_one_req</span>
+</span></span><span class=line><span class=cl><span class=c1>#             └─ PrefillAdder._commit_prefill_admission</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>req</span><span class=o>.</span><span class=n>set_extend_range</span><span class=p>(</span><span class=n>admission</span><span class=o>.</span><span class=n>prefix_len</span><span class=p>,</span> 
+</span></span><span class=line><span class=cl>                     <span class=n>admission</span><span class=o>.</span><span class=n>prefix_len</span> <span class=o>+</span> <span class=n>admission</span><span class=o>.</span><span class=n>extend_len</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=bp>self</span><span class=o>.</span><span class=n>_req_inc_lock_ref</span><span class=p>(</span><span class=n>req</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=c1># req.lock_receipt = tree_cache.inc_lock_ref(req.last_node)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=bp>self</span><span class=o>.</span><span class=n>can_run_list</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=n>req</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=n>admission</span><span class=o>.</span><span class=n>is_chunked</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=bp>self</span><span class=o>.</span><span class=n>new_chunked_req</span> <span class=o>=</span> <span class=n>req</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>extend_input_len</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>ceil_paged_tokens</span><span class=p>(</span><span class=n>admission</span><span class=o>.</span><span class=n>extend_len</span><span class=p>)</span>  <span class=c1># page 对齐</span>
+</span></span><span class=line><span class=cl><span class=bp>self</span><span class=o>.</span><span class=n>memory_budget</span><span class=o>.</span><span class=n>reserve</span><span class=p>(</span><span class=n>extend_input_len</span><span class=p>,</span> <span class=n>admission</span><span class=o>.</span><span class=n>max_new_tokens</span><span class=p>,</span> <span class=o>...</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=bp>self</span><span class=o>.</span><span class=n>rem_input_tokens</span> <span class=o>-=</span> <span class=n>compute_charge</span>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=bp>self</span><span class=o>.</span><span class=n>rem_chunk_tokens</span> <span class=ow>is</span> <span class=ow>not</span> <span class=kc>None</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=bp>self</span><span class=o>.</span><span class=n>rem_chunk_tokens</span> <span class=o>-=</span> <span class=n>compute_charge</span>
+</span></span></code></pre></td></tr></table></div></div><blockquote><p>四个动作分别进行了如下更新</p><ul><li>设置该请求的 extend 范围</li><li>在 RadixCache 树上相应的结点上锁，阻止 prefill 完成之前被提前释放</li><li>将请求加入 can_run_list，以及判断是否是 chunked_req。new_chunked_req 涉及后面的 assert</li><li>扣除预算<ul><li>从 memory_budget 即 KV pool 总预算中扣除掉 ceil_paged_tokens(extend_len) + max_new_tokens + mamba_gap_reserve</li><li>从 rem_input_tokens 中扣除 compute_charge，即原始 extend_len 或者 page 对齐的 extend_len</li><li>如果当前请求是 chunked_req，也在 rem_chunk_tokens 中扣除 compute_charge</li></ul></li></ul></blockquote><h5 id=step7-返回准入状态>step7 返回准入状态</h5><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=c1># Scheduler.event_loop_normal</span>
+</span></span><span class=line><span class=cl><span class=c1># └─ Scheduler.get_next_batch_to_run</span>
+</span></span><span class=line><span class=cl><span class=c1>#    └─ Scheduler.get_new_batch_prefill</span>
+</span></span><span class=line><span class=cl><span class=c1>#       └─ Scheduler._get_new_batch_prefill_raw</span>
+</span></span><span class=line><span class=cl><span class=c1>#          └─ PrefillAdder.add_one_req</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 在 with 块外，函数末尾</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>return</span> <span class=bp>self</span><span class=o>.</span><span class=n>budget_state</span><span class=p>()</span>
+</span></span></code></pre></td></tr></table></div></div><blockquote><p><code>budget_state</code> 会检查扣减后的预算状态，决定是否还准备准入下一个请求</p><ul><li>如果 KV pool 耗尽则返回 NO_TOKEN</li><li>如果 rem_input_tokens 或者 rem_chunk_tokens 耗尽则返回 OTHER</li><li>否则返回 CONTINUE</li></ul></blockquote><hr><h4 id=get_new_batch_prefill---part2>get_new_batch_prefill - part2</h4><p>回到 <code>_get_new_batch_prefill_raw</code>，在遍历 waiting_queue 尝试添加 req 到 adder.can_run_list 之后，我们准备正式构造 batch</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=c1># Scheduler.event_loop_normal</span>
+</span></span><span class=line><span class=cl><span class=c1># └─ Scheduler.get_next_batch_to_run</span>
+</span></span><span class=line><span class=cl><span class=c1>#    └─ Scheduler.get_new_batch_prefill</span>
+</span></span><span class=line><span class=cl><span class=c1>#       └─ Scheduler._get_new_batch_prefill_raw</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>can_run_list</span><span class=p>:</span> <span class=n>List</span><span class=p>[</span><span class=n>Req</span><span class=p>]</span> <span class=o>=</span> <span class=n>adder</span><span class=o>.</span><span class=n>can_run_list</span>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=nb>len</span><span class=p>(</span><span class=n>can_run_list</span><span class=p>)</span> <span class=o>==</span> <span class=mi>0</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>	<span class=k>return</span> <span class=kc>None</span><span class=p>,</span> <span class=n>running_batch</span>
+</span></span><span class=line><span class=cl><span class=n>can_run_set</span> <span class=o>=</span> <span class=nb>set</span><span class=p>(</span><span class=n>can_run_list</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=bp>self</span><span class=o>.</span><span class=n>waiting_queue</span> <span class=o>=</span> <span class=p>[</span><span class=n>x</span> <span class=k>for</span> <span class=n>x</span> <span class=ow>in</span> <span class=bp>self</span><span class=o>.</span><span class=n>waiting_queue</span> <span class=k>if</span> <span class=n>x</span> <span class=ow>not</span> <span class=ow>in</span> <span class=n>can_run_set</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=n>adder</span><span class=o>.</span><span class=n>new_chunked_req</span> <span class=ow>is</span> <span class=ow>not</span> <span class=kc>None</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>assert</span> <span class=bp>self</span><span class=o>.</span><span class=n>chunked_req</span> <span class=ow>is</span> <span class=kc>None</span>
+</span></span><span class=line><span class=cl>    <span class=bp>self</span><span class=o>.</span><span class=n>chunked_req</span> <span class=o>=</span> <span class=n>adder</span><span class=o>.</span><span class=n>new_chunked_req</span>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=bp>self</span><span class=o>.</span><span class=n>chunked_req</span> <span class=ow>is</span> <span class=ow>not</span> <span class=kc>None</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=bp>self</span><span class=o>.</span><span class=n>chunked_req</span><span class=o>.</span><span class=n>inflight_middle_chunks</span> <span class=o>+=</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl><span class=n>new_batch</span> <span class=o>=</span> <span class=n>ScheduleBatch</span><span class=o>.</span><span class=n>init_new</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=n>can_run_list</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=bp>self</span><span class=o>.</span><span class=n>req_to_token_pool</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=bp>self</span><span class=o>.</span><span class=n>token_to_kv_pool_allocator</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=bp>self</span><span class=o>.</span><span class=n>tree_cache</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=bp>self</span><span class=o>.</span><span class=n>model_config</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=bp>self</span><span class=o>.</span><span class=n>enable_overlap</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=bp>self</span><span class=o>.</span><span class=n>spec_algorithm</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>chunked_req</span><span class=o>=</span><span class=bp>self</span><span class=o>.</span><span class=n>chunked_req</span><span class=p>,</span>
+</span></span><span class=line><span class=cl><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>new_batch</span><span class=o>.</span><span class=n>prepare_for_extend</span><span class=p>()</span>
+</span></span></code></pre></td></tr></table></div></div><blockquote><ul><li>提取 adder.can_run_list 变成 set 并更新 waiting_queue。如果 prefill 请求列表为空则直接返回 running_batch</li><li>检查并更新 self.chunked_req，assert 不可能在上一轮有 chunked_req 的情况下这一轮又有产生新的 chunked_req</li><li>构造 ScheduleBatch，并调用 <code>prepare_for_extend</code> 设置 forward_mode=EXTEND，进行初始化</li></ul></blockquote><p>如果启用了 chunked prefill 并且在启动时同时设置了 &ndash;enable-mixed-chunk，那么框架会在 Scheduler 初始化时设置 self.is_mixed_chunk=True</p><p>对于 MIXED 模式来说，我们会将 running_batch 直接 merge 到上面构造出的 new_batch 里</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>if</span> <span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=bp>self</span><span class=o>.</span><span class=n>is_mixed_chunk</span>
+</span></span><span class=line><span class=cl>    <span class=ow>and</span> <span class=ow>not</span> <span class=n>running_batch</span><span class=o>.</span><span class=n>is_empty</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=ow>and</span> <span class=o>...</span>
+</span></span><span class=line><span class=cl><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=n>running_batch</span><span class=o>.</span><span class=n>prepare_for_decode</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>new_batch</span><span class=o>.</span><span class=n>mix_with_running</span><span class=p>(</span><span class=n>running_batch</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>new_batch</span><span class=o>.</span><span class=n>decoding_reqs</span> <span class=o>=</span> <span class=n>running_batch</span><span class=o>.</span><span class=n>reqs</span>
+</span></span><span class=line><span class=cl>    <span class=n>running_batch</span> <span class=o>=</span> <span class=n>ScheduleBatch</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>        <span class=n>reqs</span><span class=o>=</span><span class=p>[],</span> <span class=n>batch_is_full</span><span class=o>=</span><span class=n>running_batch</span><span class=o>.</span><span class=n>batch_is_full</span>
+</span></span><span class=line><span class=cl>    <span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=k>else</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>new_batch</span><span class=o>.</span><span class=n>decoding_reqs</span> <span class=o>=</span> <span class=kc>None</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>return</span> <span class=n>new_batch</span><span class=p>,</span> <span class=n>running_batch</span>
+</span></span></code></pre></td></tr></table></div></div><blockquote><p><code>mix_with_running</code> 将修改 forward_mode=MIXED 并合并 running_batch 的所有请求到 new_batch。再设置一遍 new_batch.decoding_reqs 的目的是用来标记 decode 请求</p><p>之后清空 running_batch。这里只清空了请求列表但是保留了 batch_is_full 的 flag。因为在一轮推理过后，上一轮的 last_batch 会被重新合并到 running_batch 中，详见前面「处理上一个 batch 的影响」节</p><p>我们会先 <code>filter_batch</code>，去除已经完成的请求，这个过程会同时考虑更新 batch_is_full。filter 过后再 merge 回 running_batch</p><p>对于非 MIXED 来说，设置 new_batch.decoding_reqs=None 即可</p></blockquote><hr><h3 id=prefill-优先-vs-decode>prefill 优先 vs decode</h3><p>现在我们回到了 <code>get_next_batch_to_run</code></p><p>回忆一下，我们是从这里进入了 <code>get_new_batch_prefill</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=c1># Scheduler.event_loop_normal</span>
+</span></span><span class=line><span class=cl><span class=c1># └─ Scheduler.get_next_batch_to_run</span>
+</span></span><span class=line><span class=cl><span class=c1>#    └─ Scheduler.get_new_batch_prefill</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=bp>self</span><span class=o>.</span><span class=n>dllm_config</span> <span class=ow>is</span> <span class=ow>not</span> <span class=kc>None</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>new_batch</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>get_new_batch_dllm</span><span class=p>(</span><span class=n>running_batch</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=k>elif</span> <span class=bp>self</span><span class=o>.</span><span class=n>_should_defer_prefill</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=n>new_batch</span> <span class=o>=</span> <span class=kc>None</span>
+</span></span><span class=line><span class=cl><span class=k>else</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>prefill_plan</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>get_new_batch_prefill</span><span class=p>(</span><span class=n>running_batch</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>new_batch</span> <span class=o>=</span> <span class=n>prefill_plan</span><span class=o>.</span><span class=n>batch_to_run</span>
+</span></span><span class=line><span class=cl>    <span class=n>running_batch</span> <span class=o>=</span> <span class=n>prefill_plan</span><span class=o>.</span><span class=n>running_batch</span>
+</span></span></code></pre></td></tr></table></div></div><p>获得的 prefill_plan 里包含了 new_batch 和 running_batch，我们需要考虑一下应该执行哪个</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>if</span> <span class=n>new_batch</span> <span class=ow>is</span> <span class=ow>not</span> <span class=kc>None</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>ret</span> <span class=o>=</span> <span class=n>new_batch</span>
+</span></span><span class=line><span class=cl><span class=k>else</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=ow>not</span> <span class=n>running_batch</span><span class=o>.</span><span class=n>is_empty</span><span class=p>()</span> <span class=ow>and</span> <span class=ow>not</span> <span class=n>running_batch</span><span class=o>.</span><span class=n>is_prefill_only</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=n>running_batch</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>update_running_batch</span><span class=p>(</span><span class=n>running_batch</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=n>ret</span> <span class=o>=</span> <span class=n>running_batch</span> <span class=k>if</span> <span class=ow>not</span> <span class=n>running_batch</span><span class=o>.</span><span class=n>is_empty</span><span class=p>()</span> <span class=k>else</span> <span class=kc>None</span>
+</span></span><span class=line><span class=cl>    <span class=k>else</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=n>ret</span> <span class=o>=</span> <span class=kc>None</span>
+</span></span></code></pre></td></tr></table></div></div><blockquote><p>如果 new_batch 不为空则优先运行 new_batch，否则当 decode batch 不为空时运行 decode batch</p><p><code>self.update_running_batch</code> 为 decode 做准备</p><ul><li>再进行一次 <code>filter_batch</code></li><li>用 <code>check_decode_mem</code> 检查下一步 decode 是否有足够的 KV 内存。如果内存不足触发 <code>retract_decode</code>，将一部分请求释放缓存占用并重新放入 waiting_queue。关于 retract 的策略我们会在后文讨论</li><li>调用 <code>batch.prepare_for_decode</code>，设置 forward_mode=DECODE</li></ul></blockquote><hr><h3 id=后处理>后处理</h3><p>进行同步相关准备，最后返回一个 NextBatchPlan，包括了本步要运行的 batch 和更新后的 running_batch</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=c1># Scheduler.event_loop_normal</span>
+</span></span><span class=line><span class=cl><span class=c1># └─ Scheduler.get_next_batch_to_run</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>ret</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>dp_attn_adapter</span><span class=o>.</span><span class=n>maybe_prepare_mlp_sync_batch</span><span class=p>(</span><span class=n>ret</span><span class=p>,</span> <span class=n>need_sync</span><span class=o>=</span><span class=n>need_mlp_sync</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>converted</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>dp_attn_adapter</span><span class=o>.</span><span class=n>maybe_convert_decode_to_extend</span><span class=p>(</span><span class=n>ret</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>ret</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>ngram_embedding_manager</span><span class=o>.</span><span class=n>prepare_for_forward</span><span class=p>(</span><span class=n>ret</span><span class=p>,</span> <span class=n>chunked_req</span><span class=o>=</span><span class=bp>self</span><span class=o>.</span><span class=n>chunked_req</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=n>ret</span><span class=p>:</span> <span class=c1># 设时间戳</span>
+</span></span><span class=line><span class=cl>    <span class=n>set_schedule_time_batch</span><span class=p>(</span><span class=n>ret</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>return</span> <span class=n>NextBatchPlan</span><span class=p>(</span><span class=n>batch_to_run</span><span class=o>=</span><span class=n>ret</span><span class=p>,</span> <span class=n>running_batch</span><span class=o>=</span><span class=n>running_batch</span><span class=p>)</span>
+</span></span></code></pre></td></tr></table></div></div><hr><hr></section><footer class=article-footer></footer><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css integrity=sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV crossorigin=anonymous><script src=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js integrity=sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8 crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js integrity=sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05 crossorigin=anonymous defer></script><script>window.addEventListener("DOMContentLoaded",()=>{const e=document.querySelector(".main-article");renderMathInElement(e,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredClasses:["gist"],strict:!1,trust:!0,macros:{"\\v":"\\mathrm{#1}"}})})</script></article><script src=https://utteranc.es/client.js repo=Xiwon/blog_utterances_comments issue-term=pathname label=BlogComment crossorigin=anonymous async></script><style>.utterances{max-width:unset}</style><script>let utterancesLoaded=!1;function setUtterancesTheme(e){let t=document.querySelector(".utterances iframe");t&&(e=="dark"?t.contentWindow.postMessage({type:"set-theme",theme:`photon-dark`},"https://utteranc.es"):t.contentWindow.postMessage({type:"set-theme",theme:`boxy-light`},"https://utteranc.es"))}addEventListener("message",e=>{if(e.origin!=="https://utteranc.es")return;utterancesLoaded=!0,setUtterancesTheme(document.documentElement.dataset.scheme)}),window.addEventListener("onColorSchemeChange",e=>{if(!utterancesLoaded)return;setUtterancesTheme(e.detail)})</script><footer class=site-footer><section class=copyright>&copy;
+2025 -
+2026 熹圜 | Xiwon</section><section class=powerby>REINCARNATION<br>Built with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a><br>Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=3.30.0>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e);const t=document.createElement("link");t.href="https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css",t.type="text/css",t.rel="stylesheet",document.head.appendChild(t)})()</script></body></html>
